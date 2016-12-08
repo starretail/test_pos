@@ -12,6 +12,7 @@
 		case 'r_inventory':
 		case 'r_delivery':
 		case 'r_sale':
+		case 'a_deposit':
 		case 'r_payment':
 			$strUserMenuSelect = 'Branch Reports';
 			break;
