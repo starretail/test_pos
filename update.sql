@@ -1,0 +1,2 @@
+#2016-11-26
+ALTER TABLE `delivery` ADD `cancel_date` DATE NOT NULL AFTER `statid`, ADD `cancel_time` TIME NOT NULL AFTER `cancel_date`, ADD `cancel_by` INT NOT NULL AFTER `cancel_time`, ADD `cancel_remarks` TEXT NOT NULL AFTER `cancel_by`;
