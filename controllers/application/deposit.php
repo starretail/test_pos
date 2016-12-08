@@ -1,6 +1,6 @@
 <?php
 
-class Delivery extends Controller {
+class Deposit extends Controller {
 
 	public function __construct() {
 		parent::__construct();
@@ -19,7 +19,7 @@ class Delivery extends Controller {
 		$this->view->js = array('application/codebase/dhtmlxgrid.js');
 		
 		$this->view->user_role = $strRole;
-		$this->view->user_page = 'a_delivery';
+		$this->view->user_page = 'a_deposit';
 		
 	}
 	
@@ -31,28 +31,11 @@ class Delivery extends Controller {
 		
 		$arrUserProfile = $this->model->db->db_user_profile($intUser);
 		$this->view->user_fullname = $arrUserProfile['first_name'] . ' ' . $arrUserProfile['surname'];
-		
 		$this->view->js = array_merge($this->view->js,
-			array('application/js/delivery_grid.js','application/js/delivery.js'));
+			array('application/js/deposit_grid.js','application/js/deposit.js'));
 		
-		switch ($strRole) {
-			case 'staff':
-			case 'supervisor':
-				$this->view->from_branch = $intBranch;
-				$arrBranchDetails = $this->model->db->db_branch($intUser);
-				$this->view->from_branch_name = $arrBranchDetails['name'];
-				$this->view->to_branch = '';
-				break;
-			case 'owner':
-			case 'admin':
-				$this->view->from_branch = '';
-				$this->view->to_branch = '';
-				break;
-		}
-		$this->view->branch_list = $this->model->branch_list();
-		$this->view->item_list = $this->model->item_list();
 		
-		$this->view->render('application/delivery');
+		$this->view->render('application/deposit');
 	}
 	
 	
@@ -62,16 +45,31 @@ class Delivery extends Controller {
 	}
 	
 	
-	public function xhrDeliverySaveAsNew() 
+	public function xhrDepositSaveAsNew() 
 	{
-	 	echo json_encode($this->model->xhr_delivery_save_as_new($_POST));
+	 	echo json_encode($this->model->xhr_deposit_save_as_new($_POST));
+	}
+	
+	public function xhrDepositUpdate() 
+	{
+	 	echo json_encode($this->model->xhr_deposit_update($_POST));
+	}
+	
+	public function xhrDepositCancel() 
+	{
+	 	echo json_encode($this->model->xhr_deposit_cancel($_POST));
+	}
+	
+	public function xhrDepositConfirm() 
+	{
+	 	echo json_encode($this->model->xhr_deposit_confirm($_POST));
+	}
+	public function xhrDepositDelete() 
+	{
+	 	echo json_encode($this->model->xhr_deposit_delete($_POST));
 	}
 	
 	
-	public function xhrDeliveryCancel() 
-	{
-	 	echo json_encode($this->model->xhr_delivery_cancel($_POST));
-	}
 	
 	
 }
