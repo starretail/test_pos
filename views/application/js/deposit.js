@@ -1,22 +1,108 @@
-dhtmlxEvent(window,"load",function(){    	
-	var URL = document.getElementById('hidUrl').value;	
-	var intFromBranch = $("input[name=hidFromBranchId]").val();
-	var intToBranch = $("input[name=hidToBranchId]").val();
+$(function() {
 	
-	mygrid = new dhtmlXGridObject("divGridReportContainer");
-	mygrid.setImagesPath("codebase/imgs/"); 
-	mygrid.setHeader("Id,Origin,Delievery To,Delivery No,Delivery Date,Item,Qty Delivered,Qty Received,Status"); 
-	mygrid.attachHeader(",#select_filter_strict,#select_filter_strict,#text_filter,,#select_filter_strict,,,#select_filter_strict"); 
-	mygrid.setInitWidths("50,200,200,150,150,200,120,120,150");
-	mygrid.setColAlign("center,left,left,center,center,left,right,right,center");
-	mygrid.setColTypes('ro,ro,ro,ro,ro,ro,ro,ro,ro');
-	mygrid.setSkin("light");
-	mygrid.init();
-	mygrid.load(URL+'views/application/grid_data/delivery.php'+
-		'?from_branch_id='+intFromBranch+
-		'&to_branch_id='+intToBranch
-	);
-	mygrid.attachEvent("onRowDblClicked",function(rowId,colInd){
-		getDataGridDetails(mygrid.cells(rowId,0).getValue());
+	$('#frmDeposit').submit(function() {
+		$(document).ajaxStart(function(){
+			$(".divLoader").css("display", "block");
+		});
+		
+		var strAction = '';
+		var strInfoMessage = '';
+		
+		if (document.activeElement.getAttribute('value') == 'Add Deposits') {
+			strAction = 'xhrDepositSaveAsNew';
+		} else if (document.activeElement.getAttribute('value') == 'Update') {
+			strAction = 'xhrDepositUpdate';
+		} else if (document.activeElement.getAttribute('value') == 'Cancel') {
+			strAction = 'xhrDepositCancel';
+		
+		} else if (document.activeElement.getAttribute('value') == 'Confirm') {
+			strAction = 'xhrDepositConfirm';
+		
+		} else if (document.activeElement.getAttribute('value') == 'Delete') {
+			strAction = 'xhrDepositDelete';
+		}
+		
+		var strUrl= $('#hidUrl').val() + 'a_deposit/' + strAction;
+		var strData = $("#frmDeposit").serialize();
+		
+		$.post(strUrl,strData, function( arrData,strStatus ) {
+			if (strStatus == 'success') {
+				strInfoMessage = arrData['info_message'];
+				alert(strInfoMessage);
+				
+				if (arrData['valid'] == '1') {
+					window.location.href = $('#hidUrl').val() + 'a_deposit';
+				}
+				
+			} else {
+				alert('Error encounter, pls inform admin.')			
+			}
+			
+		}, 'json');
+		
+		
+		$(document).ajaxComplete(function(){
+			$(".divLoader").css("display", "none");
+		});
+		
+		return false;
+	
 	});
+	
+	
+	$('#btnClear').click(function() {
+		$(".divContinerInputDetails input").val("");
+		$("input[name=subForm]").prop('disable',false);
+	});
+	
+	$('#btnUpdate').click(function() {
+		var blnConfirm = confirm('Are you sure you want to update ' + strInfoMessage);
+		return blnConfirm;
+	});
+	
+	$('#btnCancel').click(function() {
+		var blnConfirm = confirm('Are you sure you want to cancel ' + strInfoMessage);
+		return blnConfirm;
+	});
+	
+	$('#btnConfirm').click(function() {
+		var blnConfirm = confirm('Are you sure you want to confirm ' + strInfoMessage);
+		return blnConfirm;
+	});
+	
+	$('#btnDelete').click(function() {
+		var blnConfirm = confirm('Are you sure you want to Delete ' + strInfoMessage);
+		return blnConfirm;
+	});
+	
 });
+
+
+function getDataGridDetails(intId) {
+	$(document).ajaxStart(function(){
+		$(".divLoader").css("display", "block");
+	});
+	
+	var strUrl= $('#hidUrl').val() + 'a_deposit/xhrGetDataGridDetails';
+	var strData = 'data_id='+intId;
+	$.post(strUrl,strData, function( data,status ) {
+		if (status == 'success') {
+			$("input[name=hidDepositId]").val(data['id']);
+			$("input[name=txtAccountNo]").val(data['account_no']);
+			$("input[name=txtDepositDate]").val(data['date']);
+			$("input[name=txtAccountName]").val(data['account_name']);
+			$("input[name=txtDepositAmount]").val(data['amount']);
+			$("input[name=txtDepositedBy]").val(data['deposited_by']);
+			
+			$("input[name=subForm]").prop('disable',true);
+		} else {
+			alert('Error encounter, pls inform admin.')			
+		}
+			
+	}, 'json');
+	
+	$(document).ajaxComplete(function(){
+		$(".divLoader").css("display", "none");
+	});
+}
+
