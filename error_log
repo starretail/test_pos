@@ -1,9 +1,0 @@
-[29-Nov-2016 09:53:28 Asia/Manila] PHP Warning:  require(controllers/error.php): failed to open stream: No such file or directory in /home/starmbl/starretail.ph/libs/Bootstrap.php on line 79
-[29-Nov-2016 09:53:28 Asia/Manila] PHP Warning:  require(controllers/error.php): failed to open stream: No such file or directory in /home/starmbl/starretail.ph/libs/Bootstrap.php on line 79
-[29-Nov-2016 09:53:28 Asia/Manila] PHP Fatal error:  require(): Failed opening required 'controllers/error.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/starmbl/starretail.ph/libs/Bootstrap.php on line 79
-[29-Nov-2016 09:53:28 Asia/Manila] PHP Warning:  require(controllers/error.php): failed to open stream: No such file or directory in /home/starmbl/starretail.ph/libs/Bootstrap.php on line 79
-[29-Nov-2016 09:53:28 Asia/Manila] PHP Warning:  require(controllers/error.php): failed to open stream: No such file or directory in /home/starmbl/starretail.ph/libs/Bootstrap.php on line 79
-[29-Nov-2016 09:53:28 Asia/Manila] PHP Fatal error:  require(): Failed opening required 'controllers/error.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/starmbl/starretail.ph/libs/Bootstrap.php on line 79
-[29-Nov-2016 09:54:38 Asia/Manila] PHP Warning:  require(controllers/error.php): failed to open stream: No such file or directory in /home/starmbl/starretail.ph/libs/Bootstrap.php on line 79
-[29-Nov-2016 09:54:38 Asia/Manila] PHP Warning:  require(controllers/error.php): failed to open stream: No such file or directory in /home/starmbl/starretail.ph/libs/Bootstrap.php on line 79
-[29-Nov-2016 09:54:38 Asia/Manila] PHP Fatal error:  require(): Failed opening required 'controllers/error.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/starmbl/starretail.ph/libs/Bootstrap.php on line 79
