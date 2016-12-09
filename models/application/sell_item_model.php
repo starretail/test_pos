@@ -119,7 +119,7 @@ class Sell_Item_Model extends Model
 	
 		$strInvoice = $arrPostData['txtSalesNo'];
 		$sthInvoice = $this->db->prepare('SELECT * FROM sale_hdr '.
-			'WHERE statid in (9,10,11) and invoice = "'.$strInvoice . '"');
+			'WHERE statid in (10,11) and invoice = "'.$strInvoice . '"');
 		$sthInvoice->execute();
 		if ($sthInvoice->fetch()) {
 		 	$strInfoMessage .="Sales number already exist.\n";

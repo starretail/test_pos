@@ -46,6 +46,7 @@
 						}
 					?>
 					</select><br />
+				<label>Delivery No</label><input type="text" name="txtDeliveryNo" /><br />
 				<label>Delivery Date</label><input type="text" name="txtDeliveryDate" class = "datepicker"/><br />
 				<label>Item</label>
 					<select name="selItemList">
