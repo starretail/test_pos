@@ -43,7 +43,7 @@
 								<input type="submit" name = "subForm" id = "btnSaveAsNew" value = "Add Deposits"/>
 								<input type="button" id = "btnClear" value = "Clear"/>
 								<input type="submit" name = "subForm" id = "btnUpdate" value = "Update"/>
-								<input type="submit" name = "subForm" id = "btnCancel" value = "Cancel"/>';
+								
 							break;
 							
 					}
