@@ -209,7 +209,7 @@ $(function() {
 	
 	$("select[name=selPaymentType]").change(function() {
 		var intPromo = $("select[name=selPaymentType]").val();
-		if (intPromo == 3) {//Replacement Credit
+		if (intPromo == 2) {//Replacement Credit
 			var strUrl= $('#hidUrl').val() + 'a_sell_item/xhrSellItemReplacementCreditList';
 			var strData = $("#frmSellItem").serialize();
 			$.post(strUrl,strData, function( arrData,status ) {
@@ -242,7 +242,7 @@ $(function() {
 	
 	$("select[name=selReferenceList]").change(function() {
 		var intPromo = $("select[name=selPaymentType]").val();
-		if (intPromo == 3) {//Replacement Credit
+		if (intPromo == 2) {//Replacement Credit
 			var strUrl= $('#hidUrl').val() + 'a_sell_item/xhrSellItemReplacementCreditAmount';
 			var strData = $("#frmSellItem").serialize();
 			$.post(strUrl,strData, function( arrData,status ) {
