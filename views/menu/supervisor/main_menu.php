@@ -1,7 +1,7 @@
 <?php
 	switch ($this->user_page) {
 		case 'a_delivery_receive':
-		case 'a_sale_return':
+		case 'a_sell_item_return':
 		case 'a_delivery':
 		case 'a_deposit':
 			$strUserMenuSelect = 'Inventory';

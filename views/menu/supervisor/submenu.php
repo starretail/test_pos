@@ -1,12 +1,12 @@
 <?php
 	switch ($this->user_page) {
 		case 'a_delivery_receive':
-		case 'a_sale_return':
+		case 'a_sell_item_return':
 		case 'a_delivery':
 		case 'a_deposit':
 			$arrSubMenuList = array(
 				'Deliveries' => 'a_delivery_receive', 
-				'Return' => 'a_sale_return',
+				'Return' => 'a_sell_item_return',
 				'Transfer' => 'a_delivery',
 				'Deposit' => 'a_deposit'
 			);

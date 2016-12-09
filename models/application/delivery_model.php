@@ -18,6 +18,7 @@ class Delivery_Model extends Model
 		$arrResultData = array('valid' => 0);
 		$intFromBranch = $arrPostData['selFromBranch'];
 		$intToBranch = $arrPostData['selToBranch'];
+		$strDeliveryNo = $arrPostData['txtDeliveryNo'];
 		$strDeliveryDate = $arrPostData['txtDeliveryDate'];
 		$strImeiList = $arrPostData['txtaImei'];
 		$intItem = $arrPostData['selItemList'];
@@ -29,6 +30,10 @@ class Delivery_Model extends Model
 		
 		if (!$intToBranch) {
 			$strInfoMessage .= "Delivery to is required. \n";
+		}
+		
+		if (!$strDeliveryNo) {
+			$strInfoMessage .= "Delivery number is required. \n";
 		}
 		
 		if (!$intItem) {
@@ -98,6 +103,7 @@ class Delivery_Model extends Model
 			'create_by' => $intUser,
 			'from_branch_id' => $intFromBranch,
 			'to_branch_id' => $intToBranch,
+			'delivery_no' => $strDeliveryNo,
 			'delivery_date' => $strDeliveryDate,
 			'item_id' => $intItem,
 			'qty' => $intQty,
