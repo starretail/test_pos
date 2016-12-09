@@ -1,7 +1,7 @@
 <?php
 	switch ($this->user_page) {
 		case 'a_delivery_receive':
-		case 'a_sale_item_return':
+		case 'a_sell_item_return':
 		case 'a_delivery':
 			$strUserMenuSelect = 'Inventory';
 			break;
@@ -12,7 +12,14 @@
 		case 'r_delivery':
 		case 'r_sale':
 		case 'a_deposit':
+		case 'r_payment':
 			$strUserMenuSelect = 'Branch Reports';
+			break;
+		case 't_announcement':
+			$strUserMenuSelect = 'Announcement';
+			break;
+		case 'h_change_password':
+			$strUserMenuSelect = 'Tools';
 			break;
 	}
 	
@@ -20,7 +27,7 @@
 		'Inventory' => 'a_delivery_receive', 
 		'Sales' => 'a_sell_item', 
 		'Branch Reports' => 'r_inventory', 
-		'Announcement' => '',
+		'Announcement' => 't_announcement',
 		'Tools' => 'h_change_password'
 	);
 	
