@@ -25,7 +25,7 @@
 				'Inventory' => 'r_inventory', 
 				'Deliveries' => 'r_delivery',
 				'Sales' => 'r_sale',
-				'Deposit' => 'a_deposit',
+				'Deposit' => 'r_deposit',
 				'Card' => 'r_card',
 				'Payment' => 'r_payment',
 			);
