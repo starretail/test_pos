@@ -40,7 +40,7 @@ class Grid_Data {
 		$arrPaymentTypeList = array();
 
 		$sth = $this->db->prepare('SELECT a.*,b.id as sale_payment_id,b.payment_type_id,b.amount FROM '.
-				'sale_hdr as a inner join sale_payment as b on a.id = b.sale_hdr_id'.
+				'sale_hdr as a inner join sale_payment as b on a.id = b.sale_hdr_id '.
 			'WHERE  a.statid = 10 and b.statid = 10 '.$strCondition);
 		$sth->execute();
 		while ($arrRowData = $sth->fetch()) {

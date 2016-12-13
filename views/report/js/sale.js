@@ -10,21 +10,21 @@ $(function() {
 		
 		mygrid = new dhtmlXGridObject("divGridReportContainer");
 		mygrid.setImagesPath("codebase/imgs/"); 
-		mygrid.setHeader('Date,Branch,Transaction,Posted By,Sales No,Total Amount,Payment Type,Card Charge,'+
-			'EWT,Cash Received,Status'); 
+		mygrid.setHeader('Date Sold,Branch,Transaction,Posted By,Sales No,Imei,Item Category,Item Tag,Item Description,'+
+			'Quantity,Selling Price,Discount,Net Sales,Subtotal'); 
 		mygrid.attachHeader(',#select_filter_strict,#select_filter_strict,#select_filter_strict,#text_filter,#text_filter,'+
-			'#select_filter_strict,#select_filter_strict,,,,,,'); 
-		mygrid.setInitWidths('150,200,200,200,150,150,150,200,200,100,120');
-		mygrid.setColAlign('center,left,center,center,center,center,center,left,left,right,right');
-		mygrid.setColTypes('ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro');
+			'#select_filter_strict,#select_filter_strict,#select_filter_strict,,,,,,#select_filter_strict,,,,#select_filter_strict'); 
+		mygrid.setInitWidths('150,200,200,200,150,150,150,200,200,100,120,120,120,120,120');
+		mygrid.setColAlign('center,left,center,center,center,center,center,left,left,right,right,right,right,right,');
+		mygrid.setColTypes('ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro');
 		mygrid.setSkin("light");
 		mygrid.init();
-		mygrid.load(URL+'views/report/grid_data/payment.php?'+
-				'from_date='+strFromDate+'&'+
-				'to_date='+strToDate+'&'+
-				'branch_id='+intBranch+'&'+
-				'view_type='+strViewType
-			);
+		mygrid.load(URL+'views/report/grid_data/sale.php?'+
+			'from_date='+strFromDate+'&'+
+			'to_date='+strToDate+'&'+
+			'branch_id='+intBranch+'&'+
+			'view_type='+strViewType
+		);
 	});
 	
 	$('#btnExport').click(function() {
