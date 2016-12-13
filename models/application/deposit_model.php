@@ -55,10 +55,10 @@ class Deposit_Model extends Model
 		
 		$arrDataInsert = array(
 			'deposit_date' => $strDepositDate,
+			'deposit_by' => $strDepositedBy,
 			'account_no' => $strAccountNo,
 			'account_name' => $strAccountName,
 			'amount' => $strDepositAmount,
-			'deposited_by' => $strDepositedBy,
 			'create_date' => $strDate,
 			'create_time' => $strTime,
 			'create_by' => $intUser,
@@ -69,7 +69,7 @@ class Deposit_Model extends Model
 			
 		
 		$arrResultData['valid'] = 1;
-		$arrResultData['info_message'] = 'Deposit saved!';
+		$arrResultData['info_message'] = 'Deposit save1d!';
 		return $arrResultData;
 	}
 	

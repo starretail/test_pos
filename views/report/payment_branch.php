@@ -11,18 +11,15 @@
 			</div>
 			<div id = "divFilterReportContainer">
 				<table>
+					<input type="hidden" name="selBranch" value = "<?php echo $this->branch_id;?>" />
 					<tr>
 						<td>
 							<label>From Date</label><input type="text" name="txtFromDate" class="datepicker" /><br />
 						</td>
 						<td>
-						<input type="hidden" name="selBranch" value = "<?php echo $this->branch_id;?>" />
-						</td>
-						<td>
 							<label>View Type</label>
 								<select name="selViewType">
-								<option value="1">Gross Sales</option>
-								<option value="2">Net Sales</option>
+								<option value=""></option>
 								</select>
 						</td>
 					</tr>
