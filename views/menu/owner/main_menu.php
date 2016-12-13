@@ -12,9 +12,12 @@
 		case 'r_inventory':
 		case 'r_delivery':
 		case 'r_sale':
-		case 'a_deposit':
+		case 'r_deposit':
 		case 'r_payment':
 			$strUserMenuSelect = 'Branch Reports';
+			break;
+		case 'a_deposit':
+			$strUserMenuSelect = 'Branch Sales';
 			break;
 		case 't_announcement':
 			$strUserMenuSelect = 'Announcement';
@@ -28,6 +31,7 @@
 		'User Management' => 't_branch', 
 		'Merchandise Inventory' => 't_item_list', 
 		'Branch Reports' => 'r_inventory', 
+		'Branch Sales' => 'a_deposit', 
 		'Announcement' => 't_announcement',
 		'Tools' => 'h_change_password'
 	);

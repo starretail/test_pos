@@ -6,12 +6,13 @@
 			$strUserMenuSelect = 'Inventory';
 			break;
 		case 'a_sell_item':
+		case 'a_deposit':
 			$strUserMenuSelect = 'Sales';
 			break;
 		case 'r_inventory':
 		case 'r_delivery':
 		case 'r_sale':
-		case 'a_deposit':
+		case 'r_deposit':
 		case 'r_payment':
 			$strUserMenuSelect = 'Branch Reports';
 			break;
