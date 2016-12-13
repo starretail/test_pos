@@ -10,6 +10,7 @@
 			);
 			break;
 		case 'a_sell_item':
+		case 'a_deposit':
 			$arrSubMenuList = array(
 				'Sales' => 'a_sell_item',
 				'Deposit' => 'a_deposit'
@@ -18,16 +19,17 @@
 		case 'r_inventory':
 		case 'r_delivery':
 		case 'r_sale':
-		case 'a_deposit':
+		case 'r_deposit':
 		case 'r_payment':
 			$arrSubMenuList = array(
 				'Inventory' => 'r_inventory', 
 				'Deliveries' => 'r_delivery',
 				'Sales' => 'r_sale',
-				'Deposit' => 'a_deposit',
+				'Deposit' => 'r_deposit',
 				'Payment' => 'r_payment',
 			);
 			break;
+			
 		case 't_announcement':
 			$arrSubMenuList = array(
 				'Announcement' => 't_announcement'

@@ -19,7 +19,7 @@
 		case 'r_inventory':
 		case 'r_delivery':
 		case 'r_sale':
-		case 'a_deposit':
+		case 'r_deposit':
 		case 'r_payment':
 			$arrSubMenuList = array(
 				'Inventory' => 'r_inventory', 
@@ -30,7 +30,11 @@
 				'Payment' => 'r_payment',
 			);
 			break;
-			
+		case 'a_deposit':
+			$arrSubMenuList = array(
+				'Deposit' => 'a_deposit',
+			);
+			break;
 		case 't_announcement':
 			$arrSubMenuList = array(
 				'Announcement' => 't_announcement'
