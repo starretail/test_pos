@@ -241,6 +241,21 @@ class Database extends PDO
 		}
 	}
 	
+	public function db_serial_by_sale_return_fifo_id($intId, $strColumn=NULL)
+	{
+		$arrRowData = array();
+		$sth = $this->prepare('SELECT a.imei,b.* FROM serial as a inner join serial_history as b on a.id = b.serial_id '.
+			'WHERE b.transaction_no = ' .$intId. ' and b.statid = 14');
+		$sth->execute();
+		
+		if ($strColumn) {
+			$arrRowData = $sth->fetch();
+			return $arrRowData[$strColumn];
+		} else {
+			return $sth->fetch();
+		}
+	}
+	
 	public function db_sale_return_hdr($intId)
 	{
 		$sth = $this->prepare('SELECT * FROM sale_return_hdr WHERE id = ' .$intId);

@@ -76,7 +76,6 @@ class Grid_Data {
 				<cell>Sales</cell>
 				<cell>'.$arrEmployeeList[$intCreateBy].'</cell>
 				<cell>'.$arrRowData['invoice'].'</cell>
-				<cell></cell>
 				<cell>'.$strSerial.'</cell>
 				<cell>'.$arrItemList[$intItem]['category'].'</cell>
 				<cell>'.$arrItemList[$intItem]['tag'].'</cell>
@@ -89,7 +88,61 @@ class Grid_Data {
 			</row>';
 		
 		}
-		$strGrid .= '</rows>';
+		
+		if ($strViewType == 2) {//Net Sales
+			$sth = $this->db->prepare('SELECT a.*,b.id as sale_return_fifo_id,b.item_id,b.qty_return,b.price FROM '.
+					'sale_return_hdr as a inner join sale_return_fifo as b on a.id = b.sale_return_hdr_id '.
+				'WHERE  a.statid = 14 and b.statid = 14 '.$strCondition);
+			$sth->execute();
+			while ($arrRowData = $sth->fetch()) {
+				$intSaleReturnFifo = $arrRowData['sale_return_fifo_id'];
+				$intBranch = $arrRowData['branch_id'];
+				$intCreateBy = $arrRowData['create_by'];
+				$intItem = $arrRowData['item_id'];
+				
+				if (!isset($arrBranchList[$intBranch])) {
+					$arrBranchDetails = $this->db->db_branch($intBranch);
+					$arrBranchList[$intBranch] = $arrBranchDetails['name'];
+				}
+				
+				if (!isset($arrEmployeeList[$intCreateBy])) {
+					$arrEmployeeDetails = $this->db->db_user_profile($intCreateBy);
+					$arrEmployeeList[$intCreateBy] = $arrEmployeeDetails['first_name'] . ' ' . $arrEmployeeDetails['surname'];
+				}
+				
+				if (!isset($arrItemList[$intItem])) {
+					$arrItemeDetails = $this->db->db_item($intItem);
+					$arrItemList[$intItem]['name'] = $arrItemeDetails['name'];
+					$arrItemList[$intItem]['tag'] = $arrItemeDetails['name'];
+					$arrItemList[$intItem]['category'] = $this->db->db_item_category($arrItemeDetails['category_id'],'name');
+				}
+				
+				$strSerial = '';
+				$arrSerialDetails = $this->db->db_serial_by_sale_return_fifo_id($intSaleReturnFifo);
+				$strSerial = ($arrSerialDetails)?$arrSerialDetails['imei']:'';
+				
+				$arrSaleHdrDetails = $this->db->db_sale_hdr($arrRowData['sale_hdr_id']);
+				
+				$strGrid .= '<row style = "color:red;">
+					<cell>'.$arrRowData['create_date'].'</cell>
+					<cell>'.$arrBranchList[$intBranch].'</cell>
+					<cell>Return</cell>
+					<cell>'.$arrEmployeeList[$intCreateBy].'</cell>
+					<cell>'.$arrSaleHdrDetails['invoice'].'</cell>
+					<cell>'.$strSerial.'</cell>
+					<cell>'.$arrItemList[$intItem]['category'].'</cell>
+					<cell>'.$arrItemList[$intItem]['tag'].'</cell>
+					<cell>'.$arrItemList[$intItem]['name'].'</cell>
+					<cell>'.($arrRowData['qty_return'] * -1).'</cell>
+					<cell>'.($arrRowData['price'] * -1).'</cell>
+					<cell></cell>
+					<cell>'.($arrRowData['price'] * -1).'</cell>
+					<cell>'.($arrRowData['price'] * $arrRowData['qty_return'] * -1).'</cell>
+				</row>';
+			
+			}
+		}
+			$strGrid .= '</rows>';
 		echo $strGrid;
 	}
 }
