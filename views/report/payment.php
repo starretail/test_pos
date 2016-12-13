@@ -30,8 +30,7 @@
 						<td>
 							<label>View Type</label>
 								<select name="selViewType">
-								<option value="1"></option>
-								<option value="2"></option>
+								<option value=""></option>
 								</select>
 						</td>
 					</tr>

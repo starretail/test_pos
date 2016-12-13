@@ -37,7 +37,6 @@ class Payment extends Controller {
 			case 'staff':
 				$this->view->js = array_merge($this->view->js,
 					array('report/js/payment_grid.js','report/js/payment_branch.js'));
-			
 				$this->view->branch_id = Session::get('branch_id');
 				$this->view->render('report/payment_branch');
 				break;
