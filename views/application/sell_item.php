@@ -7,6 +7,9 @@
 		</div>
 		
 		<div class = "divContainerDetails">
+			<div class = "divContainerDetailsMenu">
+				<?php require 'views/menu/'.$this->user_role.'/submenu.php'; ?>
+			</div>
 			<table border = '1' width = '100%' class = "tbl_sell_item_list">
 				<thead>
 					<tr><th colspan = '5'><h4>SALES</h4></th></tr>

@@ -10,7 +10,10 @@
 			);
 			break;
 		case 'a_sell_item':
-			$arrSubMenuList = array();
+			$arrSubMenuList = array(
+				'Sales' => 'a_sell_item',
+				'Deposit' => 'a_deposit'
+			);
 			break;
 		case 'r_inventory':
 		case 'r_delivery':
