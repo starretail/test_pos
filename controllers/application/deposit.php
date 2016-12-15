@@ -71,5 +71,4 @@ class Deposit extends Controller {
 	
 	
 	
-	
 }
