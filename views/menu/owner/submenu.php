@@ -13,7 +13,7 @@
 			$arrSubMenuList = array(
 				'Item List' => 't_item_list', 
 				'Promotions' => 't_promotion',
-				'Deliveries' => 'a_delivery'
+				'Deliveries' => 'r_delivery'
 			);
 			break;
 		case 'r_inventory':

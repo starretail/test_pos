@@ -89,7 +89,7 @@ function getDataGridDetails(intId) {
 		if (status == 'success') {
 			$("input[name=hidDepositId]").val(data['id']);
 			$("input[name=txtAccountNo]").val(data['account_no']);
-			$("input[name=txtDepositDate]").val(data['date']);
+			$("input[name=txtDepositDate]").val(data['deposit_date']);
 			$("input[name=txtAccountName]").val(data['account_name']);
 			$("input[name=txtDepositAmount]").val(data['amount']);
 			$("input[name=txtDepositedBy]").val(data['deposited_by']);
