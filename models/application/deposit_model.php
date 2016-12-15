@@ -54,11 +54,11 @@ class Deposit_Model extends Model
 		$strToday = $strDate . ' ' . $strTime;
 		
 		$arrDataInsert = array(
-			'create_date' => $strDepositDate,
+			'deposit_date' => $strDepositDate,
+			'deposit_by' => $strDepositedBy,
 			'account_no' => $strAccountNo,
 			'account_name' => $strAccountName,
 			'amount' => $strDepositAmount,
-			'deposit_by' => $strDepositedBy,
 			'create_date' => $strDate,
 			'create_time' => $strTime,
 			'create_by' => $intUser,
@@ -69,7 +69,7 @@ class Deposit_Model extends Model
 			
 		
 		$arrResultData['valid'] = 1;
-		$arrResultData['info_message'] = 'Deposit saved!';
+		$arrResultData['info_message'] = 'Deposit save1d!';
 		return $arrResultData;
 	}
 	
@@ -100,11 +100,11 @@ class Deposit_Model extends Model
 		$strToday = $strDate . ' ' . $strTime;
 
         $arrDataUpdate = array(
-			'create_date' => $arrPostData['txtDepositDate'],
+			'deposit_date' => $arrPostData['txtDepositDate'],
 			'account_no' => $arrPostData['txtAccountNo'],
 			'account_name' => $arrPostData['txtAccountName'],
 			'amount' => $arrPostData['txtDepositAmount'],
-			'deposit_by' => $arrPostData['txtDepositedBy']
+			'deposited_by' => $arrPostData['txtDepositedBy']
 		);
 		
 		$strCondition = 'id = '.$arrPostData['hidDepositId'];
