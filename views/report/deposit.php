@@ -1,4 +1,4 @@
-<form id="frmSale" method="post" action="<?php echo URL;?>r_sale">
+<form id="frmDeposit" method="post" action="<?php echo URL;?>a_delivery">
 	<input id = "hidUrl" type="hidden" name="hidUrl" value = "<?php echo URL;?>" />
 	<div class = 'divContainerMain'>
 		<div class = 'divContainerMenu'>
@@ -11,25 +11,23 @@
 			</div>
 			<div id = "divFilterReportContainer">
 				<table>
-					<input type="hidden" name="selBranch" value = "<?php echo $this->branch_id?>" />
 					<tr>
 						<td>
-							<label>From Date</label><input type="text" name="txtFromDate" class="datepicker" /><br />
+							<label>From</label><input type="text" name="txtFromDate" class="datepicker" /><br />
 						</td>
 						<td>
 							<label>View Type</label>
 								<select name="selViewType">
-								<option value="1">Gross Sales</option>
-								<option value="2">Net Sales</option>
+								<option value=""></option>
+								<option value="1">Confirm</option>
+								<option value="2">Pending</option>
 								</select>
 						
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label>To Date</label><input type="text" name="txtToDate" class="datepicker" /><br />
-						</td>
-						<td>
+							<label>To</label><input type="text" name="txtToDate" class="datepicker" /><br />
 						</td>
 						<td align = "right">	
 							<input type="button" id = "btnView" value = "View"/>
